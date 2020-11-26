@@ -158,7 +158,7 @@ public class StatelessShiroConfig {
 		 * 标识 /api/**路径走statelessAuthc 过滤认证
 		 */
 		List<String> urlPatterns = statelessShiroProperties.getUrlPatterns();
-		if (CollectionUtils.isEmpty(urlExcludes)){
+		if (CollectionUtils.isEmpty(urlPatterns)){
 			log.warn("Shiro urlPatterns is empty,set default /**");
 			filterChainDefinitionMap.put(DEFAULT_URL, STATELESS_FILTER_NAME);
 		}else {

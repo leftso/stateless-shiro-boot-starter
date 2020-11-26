@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 实现一个基于JDBC的Realm,继承AuthorizingRealm可以看见需要重写两个方法,doGetAuthorizationInfo和doGetAuthenticationInfo
@@ -80,15 +81,15 @@ public class StatelessRealm extends AuthorizingRealm {
         // 通过表单接收的用户名
         String token = (String)authenticationToken.getPrincipal();
         if (StringUtils.isEmpty(token)) {
-            throw new UnknownAccountException("token无效");
+            throw new AuthenticationException("token无效");
         }
         // 根据token获取用户信息
-        StatelessSessionUser account = statelessSessionUserService.getStatelessSessionUser(token);
+        StatelessSessionUser sessionUser = statelessSessionUserService.getStatelessSessionUser(token);
 
-        if (account == null) {
-            throw new UnknownAccountException("token无效");
+        if (Objects.isNull(sessionUser)) {
+            throw new AuthenticationException("token无效");
         }
-        return new SimpleAuthenticationInfo(account, authenticationToken.getCredentials(), getName());
+        return new SimpleAuthenticationInfo(sessionUser, authenticationToken.getCredentials(), getName());
     }
 
 }

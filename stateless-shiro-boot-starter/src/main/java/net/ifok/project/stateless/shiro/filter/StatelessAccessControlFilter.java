@@ -1,5 +1,6 @@
 package net.ifok.project.stateless.shiro.filter;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.ifok.project.stateless.shiro.model.StatelessShiroProperties;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -14,6 +15,10 @@ import org.springframework.util.StringUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description:  该过滤器需在shiro配置类中加入filter链
@@ -66,15 +71,29 @@ public class StatelessAccessControlFilter extends AccessControlFilter {
                 return finalToken;
             }
         };
-        try {
-            // 委托给Realm进行登录
+        // 委托给Realm进行登录
+        try{
             getSubject(request, response).login(authenticationToken);
-        } catch (UnknownAccountException ue) {
-            log.debug(ue.getLocalizedMessage());
-        } catch (Exception e) {
-            log.error(e.getLocalizedMessage(), e);
-            //登录失败不用处理后面的过滤器会处理并且能通过@ControllerAdvice统一处理相关异常
+        }catch (Exception e){
+            returnLoginError(response);
+            return false;
         }
+
         return true;
+    }
+
+    /***
+     * 登录失败时默认返回401状态码
+     * @param response
+     * @throws IOException
+     */
+    private void returnLoginError(ServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json; charset=utf-8");
+        PrintWriter writer = response.getWriter();
+        Map<String,String> data=new HashMap<>();
+        data.put("code","401");
+        data.put("message","登录超时或token无效");
+        writer.write(JSON.toJSONString(data));
     }
 }

@@ -1,5 +1,6 @@
 package net.ifok.project.stateless.shiro;
 
+import net.ifok.project.stateless.shiro.config.StatelessShiroConfig;
 import net.ifok.project.stateless.shiro.model.StatelessShiroProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -10,6 +11,6 @@ import org.springframework.context.annotation.Import;
  * @Date: 2020/11/26 13:29
  **/
 @Configuration
-@Import(value = {StatelessShiroProperties.class})
+@Import(value = {StatelessShiroProperties.class, StatelessShiroConfig.class})
 public class AutoConfig {
 }
