@@ -6,6 +6,11 @@
     <groupId>net.ifok.project</groupId>
     <artifactId>stateless-shiro-boot-starter</artifactId>
     <version>1.0.0</version>
+    <name>stateless shiro spring boot starter</name>
+    <description>
+        This project integrates the apache shiro project into a stateless spring boot stater tool project. It improves reuse efficiency, and at the same time it becomes easier to use.
+    </description>
+    <url>https://git.ifok.net:3000/java-base/stateless-shiro-boot-starter.git</url>
 
     <dependencyManagement>
         <dependencies>
@@ -19,6 +24,9 @@
         </dependencies>
     </dependencyManagement>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -75,6 +83,10 @@
         </developer>
     </developers>
 
+    <scm>
+        <url>https://git.ifok.net:3000/java-base/stateless-shiro-boot-starter.git</url>
+    </scm>
+
 
     <!--构建jar上传仓库-->
     <distributionManagement>
@@ -112,6 +124,55 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+
+            <!--说明：上传中央库，必须有 GPG插件、javadoc插件、source插件-->
+            <!-- GPG 打包插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 源码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
