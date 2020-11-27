@@ -22,3 +22,7 @@ implement
 
 ## starter your's 
 do things...
+## Core Dependencies
+- spring-boot-starter-web 2.3.6.RELEASE
+- shiro-spring 1.5.3
+- fastjson 1.2.73
