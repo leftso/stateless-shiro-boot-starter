@@ -3,6 +3,7 @@ package net.ifok.project.stateless.shiro.filter;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import net.ifok.project.stateless.shiro.model.StatelessShiroProperties;
+import net.ifok.project.stateless.shiro.service.StatelessSessionUserService;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.web.filter.AccessControlFilter;
@@ -30,6 +31,9 @@ public class StatelessAccessControlFilter extends AccessControlFilter {
 
     @Autowired
     StatelessShiroProperties statelessShiroProperties;
+
+    @Autowired
+    StatelessSessionUserService statelessSessionUserService;
 
     /**
      * 先执行：isAccessAllowed 再执行onAccessDenied
@@ -91,9 +95,6 @@ public class StatelessAccessControlFilter extends AccessControlFilter {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json; charset=utf-8");
         PrintWriter writer = response.getWriter();
-        Map<String,String> data=new HashMap<>();
-        data.put("code","401");
-        data.put("message","登录超时或token无效");
-        writer.write(JSON.toJSONString(data));
+        writer.write(JSON.toJSONString(statelessSessionUserService.unAuthentication()));
     }
 }

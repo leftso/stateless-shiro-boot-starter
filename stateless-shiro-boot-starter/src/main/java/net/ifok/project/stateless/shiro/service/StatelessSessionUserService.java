@@ -2,12 +2,14 @@ package net.ifok.project.stateless.shiro.service;
 
 import net.ifok.project.stateless.shiro.model.StatelessSessionUser;
 
+import java.io.Serializable;
+
 /**
  * @Description:  会话内容存放或查询
  * @Author: xq 
  * @Date: 2020/11/26 14:13
  **/
-public interface StatelessSessionUserService {
+public interface StatelessSessionUserService  {
     /**
      * 通过令牌获取会话用户信息
      * @param accessToken 登录令牌
@@ -29,4 +31,10 @@ public interface StatelessSessionUserService {
      */
     void logout(String accessToken);
 
+    /**
+     * 登录失败返回给接口一个对象信息
+     * @param <T> 消息对象
+     * @return  登录失败返回给接口一个对象信息
+     */
+    <T extends Serializable> T unAuthentication();
 }
