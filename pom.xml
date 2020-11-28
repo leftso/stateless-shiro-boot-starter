@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.ifok.project</groupId>
+    <groupId>net.ifok.shiro</groupId>
     <artifactId>stateless-shiro-boot-starter</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <name>stateless shiro spring boot starter</name>
@@ -12,12 +12,33 @@
     </description>
     <url>https://git.ifok.net:3000/java-base/stateless-shiro-boot-starter.git</url>
 
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>leftso</name>
+            <email>leftso@qq.com</email>
+            <organization>None</organization>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://git.ifok.net:3000/java-base/stateless-shiro-boot-starter.git</url>
+    </scm>
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
-                <version>2.3.6.RELEASE</version>
+                <version>2.2.6.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -66,31 +87,10 @@
 
 
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-
-    <developers>
-        <developer>
-            <name>leftso</name>
-            <email>leftso@qq.com</email>
-            <organization>None</organization>
-        </developer>
-    </developers>
-
-    <scm>
-        <url>https://git.ifok.net:3000/java-base/stateless-shiro-boot-starter.git</url>
-    </scm>
-
 
     <!--构建jar上传仓库-->
     <distributionManagement>
-        <repository>
+       <!-- <repository>
             <id>ifok-releases</id>
             <name>maven-releases</name>
             <url>https://nexus.ifok.net:10202/repository/maven-releases/</url>
@@ -99,17 +99,17 @@
             <id>ifok-snapshots</id>
             <name>maven-snapshots</name>
             <url>https://nexus.ifok.net:10202/repository/maven-snapshots/</url>
-        </snapshotRepository>
+        </snapshotRepository>-->
 
         <!--中央仓库上传地址-->
-       <!-- <snapshotRepository>
+        <snapshotRepository>
             <id>maven-center</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
         <repository>
             <id>maven-center</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>-->
+        </repository>
 
     </distributionManagement>
 
