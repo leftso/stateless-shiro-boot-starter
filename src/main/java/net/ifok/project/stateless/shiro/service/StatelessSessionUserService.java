@@ -32,9 +32,8 @@ public interface StatelessSessionUserService  {
     void logout(String accessToken);
 
     /**
-     * 登录失败返回给接口一个对象信息
-     * @param <T> 消息对象
+     * 登录失败返回给接口一个可序列化的对象信息
      * @return  登录失败返回给接口一个对象信息
      */
-    <T extends Serializable> T unAuthentication();
+    Serializable unAuthentication();
 }

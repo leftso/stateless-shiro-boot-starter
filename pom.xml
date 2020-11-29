@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.ifok.shiro</groupId>
     <artifactId>stateless-shiro-boot-starter</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <name>stateless shiro spring boot starter</name>
     <description>
         This project integrates the apache shiro project into a stateless spring boot stater tool project. It improves reuse efficiency, and at the same time it becomes easier to use.
@@ -90,17 +90,6 @@
 
     <!--构建jar上传仓库-->
     <distributionManagement>
-        <!--<repository>
-            <id>ifok-releases</id>
-            <name>maven-releases</name>
-            <url>https://nexus.ifok.net:10202/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ifok-snapshots</id>
-            <name>maven-snapshots</name>
-            <url>https://nexus.ifok.net:10202/repository/maven-snapshots/</url>
-        </snapshotRepository>-->
-        <!--中央仓库上传地址-->
         <snapshotRepository>
             <id>maven-center</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
