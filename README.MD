@@ -3,7 +3,7 @@
 ## pom.xml导入maven依赖
 ```xml
         <dependency>
-            <groupId>net.ifok.project</groupId>
+            <groupId>net.ifok.shiro</groupId>
             <artifactId>stateless-shiro-boot-starter</artifactId>
             <version>1.1.0</version>
         </dependency>
@@ -25,3 +25,6 @@ spring.shiro.stateless.token-name=token
 - spring-boot-starter-web 2.2.6.RELEASE
 - shiro-spring 1.5.3
 - fastjson 1.2.73
+
+## 许可说明
+Apache Software License, Version 2.0
