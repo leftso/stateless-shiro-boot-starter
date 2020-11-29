@@ -17,6 +17,8 @@ implement
 ```properties
 # 那些url需要鉴权，默认/** 所有
 spring.shiro.stateless.url-patterns=/api/**
+# 排除那些不需要拦截的
+spring.shiro.stateless.url-excludes=/api/auth/login,/api/auth/logout
 # token 名称 默认accessToken，默认从http协议的header获取，如果获取不到则通过参数获取。
 spring.shiro.stateless.token-name=token
 ```
