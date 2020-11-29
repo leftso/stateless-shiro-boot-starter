@@ -1,11 +1,14 @@
-# 使用说明
+# Stateless Apache Shiro Stater
 
+## 简介
+`net.ifok.shiro:stateless-shiro-boot-starter`项目是整合Apache Shiro 无状态化鉴权成为spring boot的一个starter项目，使用方便。
+简单来说就是禁用了session相关鉴权方式，通过token的方式来进行鉴权，适合前后端分离项目，配合`net.ifok.swagger:swagger-boot-starter`能快速搭建出一个既有鉴权又有Api doc的后台服务。
 ## pom.xml导入maven依赖
 ```xml
         <dependency>
             <groupId>net.ifok.shiro</groupId>
             <artifactId>stateless-shiro-boot-starter</artifactId>
-            <version>1.1.0</version>
+            <version>1.1.1</version>
         </dependency>
 ```
 ## 实现下面接口
