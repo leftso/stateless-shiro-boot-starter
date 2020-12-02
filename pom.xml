@@ -4,13 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.ifok.shiro</groupId>
-    <artifactId>stateless-shiro-boot-starter</artifactId>
-    <version>1.1.1</version>
+    <artifactId>stateless-shiro-spring-boot-starter</artifactId>
+    <version>1.0.0</version>
     <name>stateless shiro spring boot starter</name>
     <description>
         This project integrates the apache shiro project into a stateless spring boot stater tool project. It improves reuse efficiency, and at the same time it becomes easier to use.
     </description>
-    <url>https://github.com/leftso/stateless-shiro-boot-starter</url>
+    <url>https://github.com/leftso/stateless-shiro-spring-boot-starter</url>
+    <scm>
+        <url>https://github.com/leftso/stateless-shiro-spring-boot-starter.git</url>
+    </scm>
 
     <licenses>
         <license>
@@ -28,11 +31,6 @@
         </developer>
     </developers>
 
-    <scm>
-        <url>https://github.com/leftso/stateless-shiro-boot-starter.git</url>
-    </scm>
-
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -49,10 +47,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -66,7 +60,7 @@
             <version>1.2.73</version>
         </dependency>
 
-        <!--自动装配配置相关-->
+        <!--auto config-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -75,6 +69,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -85,11 +80,8 @@
     </dependencies>
 
 
-
-
-
-    <!--构建jar上传仓库-->
     <distributionManagement>
+        <!--oss-->
         <snapshotRepository>
             <id>maven-center</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
@@ -113,8 +105,7 @@
             </plugin>
 
 
-            <!--说明：上传中央库，必须有 GPG插件、javadoc插件、source插件-->
-            <!-- GPG 打包插件-->
+            <!-- GPG SIGN-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -128,7 +119,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 源码 -->
+            <!-- SOURCE -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -159,7 +150,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
